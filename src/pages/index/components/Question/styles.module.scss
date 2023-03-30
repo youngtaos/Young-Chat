@@ -1,0 +1,26 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    
+    .item{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: .5rem;
+        align-items: center;
+        background-color: rgba(150, 150, 150, 0.1);
+        .imgBox{
+            width: 6rem;
+            height: 6rem;
+            background-color: red;
+            margin-right: 1rem;
+            border-radius: 1rem;
+            flex-shrink: 0;
+        }
+        .content{
+            flex-shrink: 1;
+        }
+    }
+}

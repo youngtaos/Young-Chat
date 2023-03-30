@@ -1,0 +1,52 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: .2rem;
+    padding: .2rem;
+    .title{
+        color: #969696;
+        font-size: 1rem;
+    }
+    .contentBox{
+        display: flex;
+        flex-direction: row;
+        overflow-y: scroll;
+        .questionBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            margin: .5rem;
+            width: 15rem;
+            height: 12rem;
+            background-color: dodgerblue;
+            border-radius: .8rem;
+            padding: .5rem;             
+            .questionItem{
+                display: flex;
+                flex-direction: column;
+                background-color: white;
+                border: none;
+                border-radius: .5rem;
+                width: 12rem;
+                height: 5rem; 
+                padding: .7rem;
+                overflow: hidden;
+                .questionName{
+                    font-size: 1rem;
+                    color: #333;
+                }
+                .questionDescription{
+                    color: #777;
+                }
+                .time{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    color: #96969696;
+                    font-size: .8rem;
+                }
+            }
+        }
+    }
+}
