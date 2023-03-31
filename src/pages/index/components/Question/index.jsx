@@ -1,8 +1,9 @@
+/* eslint-disable jsx-quotes */
 import { useState } from "react";
 import styles from "./styles.module.scss";
 
 const Question = () => {
-  const [question, setQuestion] = useState([
+  const [question] = useState([
     {
       _id: "64214e09aaf9d95c9ca0179c",
       name: "重庆的美食有哪些",
@@ -12,6 +13,7 @@ const Question = () => {
         name: "lsh",
         gender: "female",
       },
+      avatar_url: "http://localhost:7000/upload/88e192238713fbfe19392d600.png",
       updatedAt: "2023-03-30T14:55:38.752Z",
     },
     {
@@ -32,7 +34,9 @@ const Question = () => {
       {question.map((item) => {
         return (
           <view key={item._id} className={styles.item}>
-            <view className={styles.imgBox}></view>
+            <view className={styles.imgBox}>
+              <img src={item.avatar_url} alt="图片" />
+            </view>
             <view className={styles.content}>
               <view>{item.name}</view>
               <view>{item.description}</view>
