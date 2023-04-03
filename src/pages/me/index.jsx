@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
-import { Button } from "@tarojs/components";
-
-import { login, getUserInfo } from "./utils";
+import { useState } from "react";
+import MeCollecting from "./components/MeCollecting";
+import MeInfo from "./components/MeInfo";
+import { login } from "./utils";
 
 const Index = () => {
   const [userId, setUserId] = useState("");
-  useEffect(() => {
-    console.log("userId", userId);
-    userId &&
-      getUserInfo(userId).then((res) => {
-        console.log(res);
-      });
-  }, [userId]);
   return (
-    <view>
-      <Button
+    <>
+      <MeInfo userId={userId}></MeInfo>
+      <MeCollecting userId={userId} />
+      <button
         onClick={() => {
           login({ name: "lsh", password: "123" }).then((res) => {
             setUserId(res._id);
@@ -23,8 +18,8 @@ const Index = () => {
         }}
       >
         123
-      </Button>
-    </view>
+      </button>
+    </>
   );
 };
 

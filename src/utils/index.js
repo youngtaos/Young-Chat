@@ -1,4 +1,4 @@
-export const getTime = (datetimeString) => {
+export const getTime = (datetimeString = "2023-04-03T05:44:22.495Z") => {
     const start = new Date(datetimeString).getTime();
     const now = new Date().getTime();
     const diff = now - start;

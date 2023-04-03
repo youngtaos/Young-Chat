@@ -18,3 +18,10 @@ export function getUserInfo(id, params) {
     })
 }
 
+export function getUserCollecting(id, params) {
+    return request.get(`/users/${id}/collectedAnswer`, {
+        params
+    })
+}
+
+

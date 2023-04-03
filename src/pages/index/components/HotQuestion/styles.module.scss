@@ -1,3 +1,6 @@
+$primary-color: cadetblue;
+$secondary-color: #EDEDED;
+$third-color:#21A187;
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -20,7 +23,7 @@
             margin: .5rem;
             width: 15rem;
             height: 12rem;
-            background-color: dodgerblue;
+            background-color: #21A187;
             border-radius: .8rem;
             padding: .5rem;
             .infoBox{
