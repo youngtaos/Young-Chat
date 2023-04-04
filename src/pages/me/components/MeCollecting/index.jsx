@@ -21,7 +21,7 @@ const MeCollecting = ({ userId }) => {
             return (
               <view className={styles.ItemBox} key={item._id}>
                 {/* <view>{getTime(item.createdAt)}</view> */}
-                <view className={styles.contentBoxHeading}>{item.content}</view>
+                {/* <view className={styles.contentBoxHeading}>{item.content}</view> */}
                 <view className={styles.contentDesc}>{item.content}</view>
               </view>
             );

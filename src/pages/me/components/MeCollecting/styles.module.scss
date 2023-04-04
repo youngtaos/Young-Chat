@@ -30,6 +30,7 @@ $contentBox-padding: 1rem;
         margin: .3rem;
         border: 1px solid red;
         overflow: hidden;
+        text-overflow: ellipsis;
         height: 4rem;
         background-color: #FFFFFF;
         border: 0.1rem solid #E5E5E5;
@@ -44,7 +45,13 @@ $contentBox-padding: 1rem;
         }
         .contentDesc{
             color: #333;
-            font-size: .8rem;
+            font-size: .7rem;
+            margin-left: .4rem;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
         }
     }
 }
