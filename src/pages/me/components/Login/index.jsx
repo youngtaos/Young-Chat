@@ -40,16 +40,6 @@ function Login({ userId, setUserId }) {
     });
   };
 
-  // 退出登录
-  // const handleLogout = () => {
-  //   // 清除本地缓存中的用户信息
-  //   Taro.removeStorageSync("userInfo");
-  //   // 更新状态
-  //   setUserId("");
-  //   setUserInfo(null);
-  //   setHasLogin(false);
-  // };
-
   return (
     <View>
       {!hasLogin && (

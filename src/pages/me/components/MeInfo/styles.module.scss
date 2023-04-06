@@ -13,6 +13,13 @@ $contentBox-padding: 1rem;
     box-sizing: border-box;
     position: relative;
     background-color: $third-color;
+    .logout{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: .7rem;
+      color: white;
+    }
     .bgWare {
         position: absolute;
         left: 0;

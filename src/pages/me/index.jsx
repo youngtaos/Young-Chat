@@ -9,7 +9,7 @@ const Index = () => {
   return (
     <view className={styles.wrapper}>
       {userId ? (
-        <MeInfo userId={userId}></MeInfo>
+        <MeInfo setUserId={setUserId} userId={userId}></MeInfo>
       ) : (
         <Login setUserId={setUserId} userId={userId} />
       )}

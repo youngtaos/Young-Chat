@@ -3,7 +3,7 @@ import Taro from "@tarojs/taro";
 import { getUserInfo, editUserInfo } from "../../utils";
 import styles from "./styles.module.scss";
 
-const MeInfo = ({ userId }) => {
+const MeInfo = ({ userId, setUserId }) => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
     userId &&
@@ -17,8 +17,21 @@ const MeInfo = ({ userId }) => {
       avatar_url: userInfoSto.userInfo.avatarUrl,
     }).then(() => {});
   };
+
+  //退出登录
+  const handleLogout = () => {
+    // 清除本地缓存中的用户信息
+    Taro.removeStorageSync("userInfo");
+    Taro.removeStorageSync("TOKEN");
+    // 更新状态
+    setUserId("");
+    setUserInfo(null);
+  };
   return (
     <view className={styles.wrapper}>
+      <text className={styles.logout} onClick={handleLogout}>
+        溜了？退出登录
+      </text>
       <image
         className={styles.bgWare}
         src="https://codermoyv.gitee.io/coder-moyv/assets/images/wechat/bg_wave.gif"
