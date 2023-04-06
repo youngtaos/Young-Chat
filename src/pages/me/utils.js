@@ -12,6 +12,12 @@ export function login(data) {
 
 }
 
+export function editUserInfo(id, data) {
+    console.log(data)
+    return request.patch(`/users/${id}`, {
+        data
+    })
+}
 export function getUserInfo(id, params) {
     return request.get(`/users/${id}`, {
         params

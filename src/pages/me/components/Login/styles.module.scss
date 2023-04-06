@@ -1,0 +1,63 @@
+$primary-color: cadetblue;
+$secondary-color: #EDEDED;
+$third-color:#21A187;
+$contentBox-background: linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%);
+$contentBox-padding: 1rem;
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 17rem;
+    padding: 3rem;
+    box-sizing: border-box;
+    position: relative;
+    background-color: $third-color;
+    .bgWare {
+        position: absolute;
+        left: 0;
+        bottom: -2rpx;
+        width: 100%;
+        mix-blend-mode: screen;
+        height: 120rpx;
+      }
+    .userinfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .name{
+            color: whitesmoke;
+            padding: .2rem;
+            font-size: 1.5rem;
+        }
+        .clickBox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            border: 1px solid whitesmoke;
+            background-color: white;
+            color: #333;
+            font-size: .6rem;
+        }
+        .userData{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            view{
+                margin: .2rem;
+                color: whitesmoke;
+            }
+        }
+    }
+}
+@keyframes wave {
+    from {
+      background-position-x: 0;
+    }
+    to {
+      background-position-x: 28rem;
+    }
+  }

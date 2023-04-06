@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getUserInfo } from "../../utils";
+import Taro from "@tarojs/taro";
+import { getUserInfo, editUserInfo } from "../../utils";
 import styles from "./styles.module.scss";
 
 const MeInfo = ({ userId }) => {
@@ -10,6 +11,12 @@ const MeInfo = ({ userId }) => {
         setUserInfo(res);
       });
   }, [userId]);
+  const getAvatar = () => {
+    const userInfoSto = Taro.getStorageSync("userInfo");
+    editUserInfo(userId, {
+      avatar_url: userInfoSto.userInfo.avatarUrl,
+    }).then(() => {});
+  };
   return (
     <view className={styles.wrapper}>
       <image
@@ -17,7 +24,7 @@ const MeInfo = ({ userId }) => {
         src="https://codermoyv.gitee.io/coder-moyv/assets/images/wechat/bg_wave.gif"
       ></image>
       <view className={styles.userinfo}>
-        <image src={userInfo.avatar_url}></image>
+        <image src={userInfo.avatar_url} onClick={getAvatar}></image>
         <view className={styles.name}>{userInfo.name}</view>
         <view className={styles.userData}>
           <view>{userInfo.followerNumber || 0} 粉丝</view>

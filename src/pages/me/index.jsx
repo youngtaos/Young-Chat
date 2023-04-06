@@ -2,23 +2,18 @@ import { useState } from "react";
 import MeCollecting from "./components/MeCollecting";
 import MeInfo from "./components/MeInfo";
 import { login } from "./utils";
+import Login from "./components/Login";
 
 const Index = () => {
   const [userId, setUserId] = useState("");
   return (
     <>
-      <MeInfo userId={userId}></MeInfo>
+      {userId ? (
+        <MeInfo userId={userId}></MeInfo>
+      ) : (
+        <Login setUserId={setUserId} userId={userId} />
+      )}
       <MeCollecting userId={userId} />
-      <button
-        onClick={() => {
-          login({ name: "lsh", password: "123" }).then((res) => {
-            setUserId(res._id);
-          });
-          console.log(userId);
-        }}
-      >
-        123
-      </button>
     </>
   );
 };
