@@ -18,13 +18,14 @@ function Login({ userId, setUserId }) {
           Taro.getUserInfo({
             // eslint-disable-next-line no-shadow
             success: (userInfo) => {
-              console.log("userInfo", userInfo.userInfo.avatarUrl);
-              login({ name: userInfo.userInfo.nickName, password: "123" }).then(
-                (ans) => {
-                  setUserId(ans._id);
-                  return ans._id;
-                }
-              );
+              console.log("userInfo", userInfo.userInfo);
+              login({
+                name: userInfo.userInfo.nickName,
+                password: "123",
+              }).then((ans) => {
+                setUserId(ans._id);
+                return ans._id;
+              });
               // 将用户信息存储到本地缓存中
               Taro.setStorageSync("userInfo", userInfo);
               // 更新状态

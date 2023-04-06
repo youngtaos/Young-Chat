@@ -14,7 +14,7 @@ export function login(data) {
 
 export function editUserInfo(id, data) {
     console.log(data)
-    return request.patch(`/users/${id}`, {
+    return request.post(`/users/${id}`, {
         data
     })
 }

@@ -31,7 +31,7 @@ const request = async (method, url, params) => {
         }
     }
     const resp = await Taro.request(option);
-    return resp.data;//根据个人需要返回
+    return resp.data;
 }
 
 export default {
