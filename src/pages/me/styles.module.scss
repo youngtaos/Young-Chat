@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;  
+    overflow: hidden;
+    // align-items: center;   
+    .bottomBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../../static/logo.png');
+        background-repeat: no-repeat;
+        height: 8rem;
+        background-position: center;
+        z-index: -1;
+    }
+}
