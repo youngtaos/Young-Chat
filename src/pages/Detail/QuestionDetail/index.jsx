@@ -1,12 +1,9 @@
 import { View, Button } from "@tarojs/components";
 import styles from "./styles.module.scss";
-import { useRouter } from "@tarojs/taro";
 import { useState, useEffect } from "react";
 import { getQuestionById } from "../../index/utils";
 
-const QuestionDetail = () => {
-  const router = useRouter();
-  const [questionId] = useState(router.params.questionId);
+const QuestionDetail = ({ questionId }) => {
   const [questionInfo, setQuestionInfo] = useState(null);
   useEffect(() => {
     getQuestionById(questionId).then((res) => {
