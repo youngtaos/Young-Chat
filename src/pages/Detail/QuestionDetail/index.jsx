@@ -20,6 +20,12 @@ const QuestionDetail = ({ questionId }) => {
         <View className={styles.desc}>
           {questionInfo && (questionInfo.description || questionInfo.name)}
         </View>
+        <View className={styles.topics}>
+          {questionInfo &&
+            questionInfo.topics.map((item) => {
+              return <view key={item._id}>{item.name}</view>;
+            })}
+        </View>
         <View className={styles.box}>
           <View className={styles.g_and_p}>
             <View>0人关注</View>

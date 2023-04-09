@@ -20,6 +20,22 @@ $third-color:#21A187;
             margin-top: .3rem;
             font-size: 1rem;
         }
+        .topics{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: .5rem;
+            font-size: .4rem;
+            color: #777;
+            View{
+                text-align: center;
+                width: 2.6rem;
+                line-height: 1.5rem;
+                height: 1.5rem;
+                border: .4px solid $third-color;
+                border-radius: 1rem;
+            }
+        }
         .box{
             display: flex;
             flex-direction: row;
