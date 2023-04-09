@@ -24,10 +24,7 @@ export function getQuestions(params) {
     })
 }
 
-export function searchQuestions(data) {
-    return request.get(`/questions?q=${data}`, {
-    })
-}
+
 
 
 export function getUserCollecting(id, params) {
@@ -35,5 +32,29 @@ export function getUserCollecting(id, params) {
         params
     })
 }
+
+//获取指定问题
+export function getQuestionById(id, params) {
+    return request.get(`/questions/${id}`, {
+        params
+    })
+}
+
+//搜索问题
+export function searchQuestions(data) {
+    return request.get(`/questions?q=${data}`, {
+    })
+}
+
+//获取问题的答案列表
+///questions/64214e09aaf9d95c9ca0179c/answer
+
+export function getQuestionAnswerList(id, params) {
+    return request.get(`/questions/${id}/answer`, {
+        params
+    })
+}
+
+
 
 
