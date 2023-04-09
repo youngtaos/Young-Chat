@@ -17,10 +17,15 @@ const QuestionDetail = ({ questionId }) => {
         <View className={styles.title}>
           {questionInfo && questionInfo.name}
         </View>
+        <View className={styles.desc}>
+          {questionInfo && (questionInfo.description || questionInfo.name)}
+        </View>
         <View className={styles.box}>
           <View className={styles.g_and_p}>
-            <View>1人关注</View>
-            <View>1条回答</View>
+            <View>0人关注</View>
+            <View>
+              {(questionInfo && questionInfo.answeredNumber) || 0}条回答
+            </View>
           </View>
           <Button className={styles.writeAnswer}>写回答</Button>
         </View>
