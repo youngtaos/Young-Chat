@@ -5,6 +5,7 @@ import Question from "./components/Question";
 import SearchBox from "./components/SearchBox";
 import TopicBox from "./components/TopicBox";
 import styles from "./styles.module.scss";
+import AddQuestion from "./components/AddQuestion";
 
 const Index = () => {
   const [question, setQuestion] = useState([]);
@@ -33,6 +34,7 @@ const Index = () => {
         currentIndex={currentIndex}
         topic={topic}
       />
+      <AddQuestion />
     </View>
   );
 };

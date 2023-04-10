@@ -17,7 +17,6 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
       });
     } else {
       getTopicsQuestionsList(topic[currentIndex]._id).then((res) => {
-        console.log(res);
         setQuestion(res);
       });
     }

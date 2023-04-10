@@ -13,13 +13,11 @@ const SearchBox = ({ question, setQuestion }) => {
   };
   return (
     <view className={styles.wrapper}>
-      {/* <AtIcon value="clock" size="30" color="#F00"></AtIcon> */}
       <Input
         value={inputValue}
         placeholder="搜索相关内容"
         onInput={(e) => {
           setInputValue(e.target.value);
-          console.log(e.target.value);
         }}
       />
       <view onClick={searchHandle} className={styles.searchBtn}>

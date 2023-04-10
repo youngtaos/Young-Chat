@@ -26,15 +26,20 @@ $contentBox-padding: 1rem;
             color: #333;
             font-size: .8rem;
         }
-        .imgBox, image{
+        .imgBox{
             width: 6rem;
             height: 6rem;
             background-color: white;
             margin-right: 1rem;
             border-radius: 1rem;
             flex-shrink: 0;
-            
+            overflow: hidden;
+            image{
+                width: 6rem;
+                max-height: 6rem;
+            }
         }
+        
         .content{
             flex-shrink: 1;
         }

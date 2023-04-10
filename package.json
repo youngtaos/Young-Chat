@@ -52,10 +52,10 @@
     "@tarojs/taro": "3.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "sass": "^1.60.0",
-    "taro-ui": "^2.3.4"
+    "sass": "^1.60.0"
   },
   "devDependencies": {
+    "taro-ui": "^3.0.0-alpha",
     "@babel/core": "^7.8.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
     "@tarojs/cli": "3.6.2",
