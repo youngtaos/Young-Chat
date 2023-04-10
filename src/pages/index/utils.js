@@ -46,6 +46,19 @@ export function searchQuestions(data) {
     })
 }
 
+//获取词条列表
+export function getTopicsList(params) {
+    return request.get(`/topics`, {
+        params
+    })
+}
+
+//获取指定词条下的问题列表
+export function getTopicsQuestionsList(id, params) {
+    return request.get(`/topics/${id}/questions/`, {
+        params
+    })
+}
 
 
 

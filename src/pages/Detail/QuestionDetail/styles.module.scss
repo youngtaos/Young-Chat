@@ -19,6 +19,12 @@ $third-color:#21A187;
         .desc{
             margin-top: .3rem;
             font-size: 1rem;
+            max-height: 2rem;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
         }
         .topics{
             display: flex;

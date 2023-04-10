@@ -1,20 +1,26 @@
 /* eslint-disable jsx-quotes */
 import { useEffect } from "react";
 import styles from "./styles.module.scss";
-import { getQuestions } from "../../utils";
+import { getQuestions, getTopicsQuestionsList } from "../../utils";
 import Taro from "@tarojs/taro";
 
-const Question = ({ question, setQuestion }) => {
+const Question = ({ question, setQuestion, currentIndex, topic }) => {
   function handleClick(questionId) {
     Taro.navigateTo({
       url: `/pages/Detail/index?questionId=${questionId}`,
     });
   }
   useEffect(() => {
-    getQuestions({}).then((res) => {
-      setQuestion(res);
-    });
-  }, []);
+    if (currentIndex === 0) {
+      getQuestions({}).then((res) => {
+        setQuestion(res);
+      });
+    } else {
+      getTopicsQuestionsList(topic[currentIndex]._id).then((res) => {
+        setQuestion(res);
+      });
+    }
+  }, [currentIndex, setQuestion]);
   return (
     <view className={styles.wrapper}>
       {question.map((item) => {
