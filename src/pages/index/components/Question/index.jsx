@@ -17,6 +17,7 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
       });
     } else {
       getTopicsQuestionsList(topic[currentIndex]._id).then((res) => {
+        console.log(res);
         setQuestion(res);
       });
     }
@@ -33,11 +34,11 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
             }}
           >
             <view className={styles.imgBox}>
-              <img src={item.avatar_url} alt="图片" />
+              <image src={item.avatar_url} alt="图片" />
             </view>
             <view className={styles.content}>
-              <view>{item.name}</view>
-              <view>{item.description}</view>
+              <view className={styles.name}>{item.name}</view>
+              <view className={styles.desc}>{item.description}</view>
             </view>
           </view>
         );

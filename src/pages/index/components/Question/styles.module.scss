@@ -15,10 +15,18 @@ $contentBox-padding: 1rem;
         justify-content: flex-start;
         margin: 1rem;
         padding: 1rem;
-        border-radius: .5rem;
+        border-radius: .4rem;
         align-items: center;
         background-color: rgba(150, 150, 150, 0.1);
-        .imgBox{
+        .name{
+            color: black;
+            margin-bottom: .2rem;
+        }
+        .desc{
+            color: #333;
+            font-size: .8rem;
+        }
+        .imgBox, image{
             width: 6rem;
             height: 6rem;
             background-color: white;
