@@ -18,6 +18,9 @@ const ContentCom = () => {
       <AtTag type="primary" circle>
         标签
       </AtTag>
+      <AtTag type="primary" circle>
+        新增标签
+      </AtTag>
     </>
   );
 };

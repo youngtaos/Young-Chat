@@ -6,6 +6,8 @@ import SearchBox from "./components/SearchBox";
 import TopicBox from "./components/TopicBox";
 import styles from "./styles.module.scss";
 import AddQuestion from "./components/AddQuestion";
+import Taro from "@tarojs/taro";
+import { useEffect } from "react";
 
 const Index = () => {
   const [question, setQuestion] = useState([]);
@@ -16,6 +18,7 @@ const Index = () => {
       name: "全部",
     },
   ]);
+
   return (
     <View className={styles.wrapper}>
       <SearchBox question={question} setQuestion={setQuestion} />

@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 
 const MeInfo = ({ userId, setUserId }) => {
   const [userInfo, setUserInfo] = useState({});
+
   useEffect(() => {
     userId &&
       getUserInfo(userId).then((res) => {
@@ -22,6 +23,7 @@ const MeInfo = ({ userId, setUserId }) => {
   const handleLogout = () => {
     // 清除本地缓存中的用户信息
     Taro.removeStorageSync("userInfo");
+    Taro.removeStorageSync("userId");
     Taro.removeStorageSync("TOKEN");
     // 更新状态
     setUserId("");
