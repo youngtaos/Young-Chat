@@ -1,31 +1,28 @@
-import { View, Button } from "@tarojs/components";
+/* eslint-disable jsx-quotes */
+import { View, Text } from "@tarojs/components";
 import styles from "./styles.module.scss";
-import { AtModalHeader, AtModalContent, AtModalAction } from "taro-ui";
+import { AtFloatLayout, AtFab, AtTextarea } from "taro-ui";
 import { useState } from "react";
+import ContentCom from "./content";
 
 const AddQuestion = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpened, setIsOpen] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpen = () => {
     setIsOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleClose = () => {
     setIsOpen(false);
   };
   return (
     <View className={styles.wrapper}>
-      <Button onClick={handleOpenModal}>打开弹窗</Button>
-      <AtModalAction isOpened={isOpen} onClose={handleCloseModal}>
-        <AtModalHeader>标题</AtModalHeader>
-        <AtModalContent>
-          <View>这里是弹窗的内容</View>
-        </AtModalContent>
-        <AtModalAction>
-          <Button onClick={handleCloseModal}>取消</Button>
-          <Button onClick={handleCloseModal}>确定</Button>
-        </AtModalAction>
-      </AtModalAction>
+      <AtFab onClick={handleOpen} className={styles.addBtn}>
+        提问?
+      </AtFab>
+      <AtFloatLayout isOpened={isOpened} title="你的问题" onClose={handleClose}>
+        <ContentCom />
+      </AtFloatLayout>
     </View>
   );
 };

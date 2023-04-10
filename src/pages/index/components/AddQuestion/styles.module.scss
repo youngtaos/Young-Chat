@@ -1,0 +1,14 @@
+$forth-color: #20508F;
+$primary-color: cadetblue;
+$secondary-color: #EDEDED;
+$third-color:#21A187;
+
+.wrapper{
+    .addBtn{
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        font-size: .8rem;
+        background-color: $forth-color;
+    }
+}

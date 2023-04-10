@@ -1,10 +1,11 @@
 /* eslint-disable jsx-quotes */
-import { Input, Text } from "@tarojs/components";
+
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import { AtSearchBar } from "taro-ui";
 import { searchQuestions } from "../../utils";
 
-const SearchBox = ({ question, setQuestion }) => {
+const SearchBox = ({ setQuestion }) => {
   const [inputValue, setInputValue] = useState("");
   const searchHandle = () => {
     searchQuestions(inputValue).then((res) => {
@@ -13,16 +14,15 @@ const SearchBox = ({ question, setQuestion }) => {
   };
   return (
     <view className={styles.wrapper}>
-      <Input
+      <AtSearchBar
+        showActionButton
         value={inputValue}
         placeholder="搜索相关内容"
-        onInput={(e) => {
-          setInputValue(e.target.value);
+        onActionClick={searchHandle}
+        onChange={(value) => {
+          setInputValue(value);
         }}
       />
-      <view onClick={searchHandle} className={styles.searchBtn}>
-        查找
-      </view>
     </view>
   );
 };
