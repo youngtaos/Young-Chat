@@ -1,5 +1,5 @@
 /* eslint-disable jsx-quotes */
-import { AtTag, AtInput, AtTextarea, AtFloatLayout } from "taro-ui";
+import { AtTag, AtInput, AtTextarea, AtFloatLayout, AtIcon } from "taro-ui";
 import { Textarea, Input, View } from "@tarojs/components";
 import { useEffect, useState } from "react";
 
@@ -48,6 +48,15 @@ const ContentCom = ({
                 <AtTag type="primary" circle active>
                   {item.name}
                 </AtTag>
+                <AtIcon
+                  value="close-circle"
+                  size="17"
+                  color="#F00"
+                  className={styles.tagIcon}
+                  onClick={() => {
+                    handleCancelTopics(item);
+                  }}
+                ></AtIcon>
               </View>
             );
           })}

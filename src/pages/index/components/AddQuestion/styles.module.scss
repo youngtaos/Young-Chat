@@ -20,6 +20,13 @@ $third-color:#21A187;
             padding: 0.3rem;
             .tag{
                 margin: .2rem;
+                position: relative;
+                .tagIcon{
+                    position: absolute;
+                    // z-index: 9999;
+                    right: 0.05rem;
+                    top: -0.2rem;
+                }
             }
         }
         
