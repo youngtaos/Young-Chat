@@ -51,6 +51,10 @@ const AddQuestion = () => {
 
   const handleAddQuestion = () => {
     const res = selectedTopics.map((item) => item._id);
+    if (!userInfo) {
+      setIsLogin(false);
+      return;
+    }
     if (!title || !content || !selectedTopics.length) {
       setLesssInfo(true);
     } else {
@@ -59,7 +63,9 @@ const AddQuestion = () => {
         description: content,
         topics: res,
       };
-      addQuestion(data).then(() => {});
+      addQuestion(data).then(() => {
+        setIsOpen(false);
+      });
     }
   };
 
