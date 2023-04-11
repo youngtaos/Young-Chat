@@ -60,6 +60,14 @@ export function getTopicsQuestionsList(id, params) {
     })
 }
 
+//提出问题
+export function addQuestion(data) {
+    console.log(data)
+    return request.post(`/questions`, {
+        data
+    })
+}
+
 
 
 
