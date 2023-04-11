@@ -1,6 +1,7 @@
 /* eslint-disable jsx-quotes */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { AtIcon } from "taro-ui";
 import styles from "./styles.module.scss";
 import { getTime } from "../../../../utils/index";
 
@@ -71,11 +72,25 @@ const HotQuestion = () => {
   ]);
   return (
     <view className={styles.wrapper}>
-      <view className={styles.title}>热议的</view>
+      <view className={styles.title}>
+        热议的
+        <AtIcon
+          value="analytics"
+          size="24"
+          color="#F00"
+          className={styles.hotIcon}
+        ></AtIcon>
+      </view>
       <view className={styles.contentBox}>
         {questions.map((item) => {
           return (
             <view className={styles.questionBox} key={item._id}>
+              <AtIcon
+                value="lightning-bolt"
+                size="30"
+                color="#FFFFFF"
+                className={styles.hotIcon}
+              ></AtIcon>
               <view className={styles.infoBox}>
                 <view className={styles.imgBox}>
                   <image src={item.questioner.avatar_url} alt="头像" />
