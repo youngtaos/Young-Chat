@@ -11,4 +11,13 @@ $third-color:#21A187;
         font-size: .8rem;
         background-color: $forth-color;
     }
+    .tagBox{
+        display: flex;
+        flex-direction: row;
+        padding: 0.3rem;
+        .tag{
+            margin: .2rem;
+        }
+    }
+    
 }
