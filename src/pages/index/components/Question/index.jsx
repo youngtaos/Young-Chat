@@ -1,11 +1,12 @@
 /* eslint-disable jsx-quotes */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { getQuestions, getTopicsQuestionsList } from "../../utils";
 import Taro from "@tarojs/taro";
 import { AtButton } from "taro-ui";
 
 const Question = ({ question, setQuestion, currentIndex, topic }) => {
+  const [page, setPage] = useState(2);
   function handleClick(questionId) {
     Taro.navigateTo({
       url: `/pages/Detail/index?questionId=${questionId}`,
@@ -22,6 +23,17 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
       });
     }
   }, [currentIndex, setQuestion]);
+  const handleShowMore = () => {
+    getQuestions({ page })
+      .then((res) => {
+        setQuestion([...question, ...res]);
+      })
+      .then(() => {
+        let temp = page;
+        temp = temp + 1;
+        setPage(temp);
+      });
+  };
   return (
     <view className={styles.wrapper}>
       {question.map((item) => {
@@ -43,7 +55,14 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
           </view>
         );
       })}
-      <AtButton className={styles.more}>加载更多</AtButton>
+      <AtButton
+        className={styles.more}
+        onClick={() => {
+          handleShowMore();
+        }}
+      >
+        加载更多
+      </AtButton>
     </view>
   );
 };
