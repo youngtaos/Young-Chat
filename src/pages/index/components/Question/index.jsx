@@ -6,13 +6,15 @@ import Taro from "@tarojs/taro";
 import { AtButton } from "taro-ui";
 
 const Question = ({ question, setQuestion, currentIndex, topic }) => {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState();
   function handleClick(questionId) {
     Taro.navigateTo({
       url: `/pages/Detail/index?questionId=${questionId}`,
     });
   }
   useEffect(() => {
+    const arr = new Array(topic.length).fill(2);
+    setPage(arr);
     if (currentIndex === 0) {
       getQuestions({}).then((res) => {
         setQuestion(res);
@@ -24,15 +26,43 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
     }
   }, [currentIndex, setQuestion]);
   const handleShowMore = () => {
-    getQuestions({ page })
-      .then((res) => {
-        setQuestion([...question, ...res]);
-      })
-      .then(() => {
-        let temp = page;
-        temp = temp + 1;
-        setPage(temp);
-      });
+    if (currentIndex === 0) {
+      console.log(page);
+      page[currentIndex] &&
+        getQuestions({ page: page[currentIndex] })
+          .then((res) => {
+            setQuestion([...question, ...res]);
+            return res;
+          })
+          .then((res) => {
+            if (res.length) {
+              let temp = page;
+              let num = temp[currentIndex] + 1;
+              temp.splice(currentIndex, 1, num);
+              console.log(temp);
+              setPage(temp);
+            }
+          });
+    } else {
+      console.log(page);
+      page[currentIndex] &&
+        getTopicsQuestionsList(topic[currentIndex]._id, {
+          page: page[currentIndex],
+        })
+          .then((res) => {
+            setQuestion([...question, ...res]);
+            return res;
+          })
+          .then((res) => {
+            if (res.length) {
+              let temp = page;
+              let num = temp[currentIndex] + 1;
+              temp.splice(currentIndex, 1, num);
+              console.log(temp);
+              setPage(temp);
+            }
+          });
+    }
   };
   return (
     <view className={styles.wrapper}>
