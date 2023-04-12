@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { getQuestions, getTopicsQuestionsList } from "../../utils";
 import Taro from "@tarojs/taro";
+import { AtButton } from "taro-ui";
 
 const Question = ({ question, setQuestion, currentIndex, topic }) => {
   function handleClick(questionId) {
@@ -42,6 +43,7 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
           </view>
         );
       })}
+      <AtButton className={styles.more}>加载更多</AtButton>
     </view>
   );
 };
