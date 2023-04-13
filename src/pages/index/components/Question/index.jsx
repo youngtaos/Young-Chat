@@ -29,7 +29,6 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
   }, [currentIndex, setQuestion]);
   const handleShowMore = () => {
     if (currentIndex === 0) {
-      console.log(page);
       page[currentIndex] &&
         getQuestions({ page: page[currentIndex] })
           .then((res) => {
@@ -41,7 +40,6 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
               let temp = page;
               let num = temp[currentIndex] + 1;
               temp.splice(currentIndex, 1, num);
-              console.log(temp);
               setPage(temp);
             } else {
               setIsOpened(true);

@@ -96,6 +96,7 @@ const AddQuestion = () => {
           type="primary"
           size="small"
           className={styles.qbtn}
+          disabled={!isLogin}
           onClick={() => {
             handleAddQuestion();
           }}
