@@ -1,0 +1,33 @@
+$forth-color: #20508F;
+$primary-color: cadetblue;
+$secondary-color: #EDEDED;
+$third-color:#21A187;
+
+.wrapper{
+    .question{
+        display: flex;
+        width: 100%;
+        margin-bottom: 1rem;
+        .header{
+            display: flex;
+            flex-direction: column;
+            padding: .8rem;
+            width: 100%;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+            .title{
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .desc{
+                margin-top: .3rem;
+                font-size: 1rem;
+                max-height: 2rem;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
