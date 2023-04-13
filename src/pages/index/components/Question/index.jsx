@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { getQuestions, getTopicsQuestionsList } from "../../utils";
 import Taro from "@tarojs/taro";
-import { AtButton } from "taro-ui";
+import { AtButton, AtToast } from "taro-ui";
 
 const Question = ({ question, setQuestion, currentIndex, topic }) => {
   const [page, setPage] = useState();
+  const [isOpened, setIsOpened] = useState(false);
+
   function handleClick(questionId) {
     Taro.navigateTo({
       url: `/pages/Detail/index?questionId=${questionId}`,
@@ -41,10 +43,11 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
               temp.splice(currentIndex, 1, num);
               console.log(temp);
               setPage(temp);
+            } else {
+              setIsOpened(true);
             }
           });
     } else {
-      console.log(page);
       page[currentIndex] &&
         getTopicsQuestionsList(topic[currentIndex]._id, {
           page: page[currentIndex],
@@ -60,12 +63,23 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
               temp.splice(currentIndex, 1, num);
               console.log(temp);
               setPage(temp);
+            } else {
+              setIsOpened(true);
             }
           });
     }
   };
   return (
     <view className={styles.wrapper}>
+      <AtToast
+        isOpened={isOpened}
+        onClose={() => {
+          setIsOpened(false);
+        }}
+        duration={1000}
+        text="没有更多了"
+        // icon="{icon}"
+      ></AtToast>
       {question.map((item) => {
         return (
           <view
