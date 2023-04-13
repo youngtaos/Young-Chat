@@ -88,7 +88,13 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
             }}
           >
             <view className={styles.imgBox}>
-              <image src={item.avatar_url} alt="图片" />
+              <image
+                src={
+                  item.avatar_url ||
+                  "http://localhost:7000/upload/203e17202ef06b7c97552f401.png"
+                }
+                alt="图片"
+              />
             </view>
             <view className={styles.content}>
               <view className={styles.name}>{item.name}</view>

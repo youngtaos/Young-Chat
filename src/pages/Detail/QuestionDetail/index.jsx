@@ -2,9 +2,17 @@ import { View, Button } from "@tarojs/components";
 import styles from "./styles.module.scss";
 import { useState, useEffect } from "react";
 import { getQuestionById } from "../../index/utils";
+import Taro from "@tarojs/taro";
 
 const QuestionDetail = ({ questionId }) => {
   const [questionInfo, setQuestionInfo] = useState(null);
+
+  function handleClick(qId) {
+    Taro.navigateTo({
+      url: `/pages/AddAnswer/index?questionId=${qId}`,
+    });
+  }
+
   useEffect(() => {
     getQuestionById(questionId).then((res) => {
       setQuestionInfo(res);
@@ -33,7 +41,14 @@ const QuestionDetail = ({ questionId }) => {
               {(questionInfo && questionInfo.answeredNumber) || 0}条回答
             </View>
           </View>
-          <Button className={styles.writeAnswer}>写回答</Button>
+          <Button
+            className={styles.writeAnswer}
+            onClick={() => {
+              handleClick(questionId);
+            }}
+          >
+            写回答
+          </Button>
         </View>
       </View>
     </View>
