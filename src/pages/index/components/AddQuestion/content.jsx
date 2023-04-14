@@ -22,23 +22,27 @@ const ContentCom = ({
   return (
     <View className={styles.questionWrapper}>
       <View>
-        <AtInput
-          name="问题名字"
-          value={title}
-          placeholder="请填入问题名字..."
-          onChange={(value) => {
-            setTitle(value);
-          }}
-          border
-        />
-        <AtTextarea
-          value={content}
-          onChange={(value) => {
-            setContent(value);
-          }}
-          maxLength={200}
-          placeholder="请详细描述你的问题..."
-        />
+        <View>
+          <Input
+            className={styles.questionInput}
+            name="问题名字"
+            value={title}
+            placeholder="请填入问题名字..."
+            onChange={(value) => {
+              setTitle(value);
+            }}
+            border
+          />
+          <Textarea
+            className={styles.questionTextarea}
+            value={content}
+            onChange={(value) => {
+              setContent(value);
+            }}
+            maxLength={200}
+            placeholder="请详细描述你的问题..."
+          />
+        </View>
       </View>
       <View className={styles.tagBox}>
         {selectedTopics &&

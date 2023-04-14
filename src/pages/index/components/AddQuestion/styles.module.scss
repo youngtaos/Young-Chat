@@ -4,6 +4,7 @@ $secondary-color: #EDEDED;
 $third-color:#21A187;
 
 .wrapper{
+    display: flex;
     .addBtn{
         position: fixed;
         bottom: 2rem;
@@ -14,6 +15,21 @@ $third-color:#21A187;
     .questionWrapper{
         display: flex;
         flex-direction: column;
+        .questionInput{
+            width: 90%;
+            border: none;
+            // border-bottom: .1rem solid #21A187;
+            padding: .4rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .questionTextarea{
+            width: 90%;
+            border-radius: .5rem;
+            // border: .1rem solid #21A187;
+            padding: .5rem;
+            margin-top: .4rem;
+        }
         .tagBox{
             display: flex;
             flex-direction: row;
