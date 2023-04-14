@@ -3,19 +3,42 @@ import { useState, useEffect } from "react";
 import { getQuestionAnswerList } from "../utils";
 import styles from "./styles.module.scss";
 import AnswerItem from "./item";
+import { AtButton } from "taro-ui";
+import { useCallback } from "react";
 
 const AnswerList = ({ questionId }) => {
   const [answerList, setAnswerList] = useState([]);
   const [isNew, setIsNew] = useState("true");
+  const [page, setPage] = useState(2);
+  const [isLast, setIsLast] = useState(false);
   const handleSwitch = () => {
     setIsNew(!isNew);
   };
 
+  const nextPageData = () => {
+    getQuestionAnswerList(questionId, { per_Page: 1, page })
+      .then((res) => {
+        setAnswerList(res);
+        return res;
+      })
+      .then((res) => {
+        if (res.length) {
+          let temp = page;
+          temp += 1;
+          setPage(temp);
+
+          console.log(page);
+        } else {
+          setIsLast(true);
+          console.log("没有了");
+        }
+      });
+  };
   useEffect(() => {
-    getQuestionAnswerList(questionId).then((res) => {
+    getQuestionAnswerList(questionId, { per_Page: 1, page }).then((res) => {
       setAnswerList(res.reverse());
     });
-  }, [questionId]);
+  }, [page, questionId]);
   return (
     <View className={styles.wrapper}>
       <View className={styles.top}>
@@ -25,7 +48,22 @@ const AnswerList = ({ questionId }) => {
         </View>
       </View>
       {answerList.map((item) => {
-        return <AnswerItem key={item._id} item={item} />;
+        return (
+          <>
+            <AnswerItem key={item._id} item={item} />
+            {isLast ? (
+              <View>到底了</View>
+            ) : (
+              <AtButton
+                onClick={() => {
+                  nextPageData();
+                }}
+              >
+                下一篇
+              </AtButton>
+            )}
+          </>
+        );
       })}
     </View>
   );
