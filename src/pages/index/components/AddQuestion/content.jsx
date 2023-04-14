@@ -40,7 +40,7 @@ const ContentCom = ({
               setContent(value);
             }}
             maxLength={200}
-            placeholder="请详细描述你的问题..."
+            placeholder="请详细描述你的问题...(最多可输入两百字)"
           />
         </View>
       </View>
