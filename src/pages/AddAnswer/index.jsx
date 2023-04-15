@@ -14,6 +14,7 @@ const AddAnswer = () => {
   const [placeholder] = useState("请在这里输入……");
   const [answerContent, setAnswerContent] = useState("");
   const [isOpened, setIsOpened] = useState(false);
+  const [isBlock, setIsBlock] = useState(false);
   const editorCtxRef = useRef(null);
   useEffect(() => {
     getQuestionById(questionId).then((res) => {
@@ -34,9 +35,13 @@ const AddAnswer = () => {
   };
 
   const handleSubmit = () => {
-    AddQuestionAnswer(questionId, { content: answerContent }).then(() => {
-      setIsOpened(true);
-    });
+    if (answerContent) {
+      AddQuestionAnswer(questionId, { content: answerContent }).then(() => {
+        setIsOpened(true);
+      });
+    } else {
+      setIsBlock(true);
+    }
   };
 
   return (
@@ -73,6 +78,15 @@ const AddAnswer = () => {
         }}
         duration={1000}
         text="感谢您提交答案！"
+        // icon="{icon}"
+      ></AtToast>
+      <AtToast
+        isOpened={isBlock}
+        onClose={() => {
+          setIsOpened(false);
+        }}
+        duration={1000}
+        text="答案不能为空哦"
         // icon="{icon}"
       ></AtToast>
     </View>
