@@ -1,6 +1,6 @@
 import { View } from "@tarojs/components";
 import { useState, useEffect } from "react";
-import { getQuestionAnswerList } from "../utils";
+import { getQuestionAnswerList, getQuestionHotAnswerList } from "../utils";
 import styles from "./styles.module.scss";
 import AnswerItem from "./item";
 import { AtButton } from "taro-ui";
@@ -35,10 +35,16 @@ const AnswerList = ({ questionId }) => {
       });
   };
   useEffect(() => {
-    getQuestionAnswerList(questionId, { per_Page: 1, page }).then((res) => {
-      setAnswerList(res.reverse());
-    });
-  }, [page, questionId]);
+    isNew
+      ? getQuestionAnswerList(questionId, { per_Page: 1, page }).then((res) => {
+          setAnswerList(res.reverse());
+        })
+      : getQuestionHotAnswerList(questionId, { per_Page: 1, page }).then(
+          (res) => {
+            setAnswerList(res.reverse());
+          }
+        );
+  }, [isNew, page, questionId]);
   return (
     <View className={styles.wrapper}>
       <View className={styles.top}>
