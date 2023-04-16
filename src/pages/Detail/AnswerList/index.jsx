@@ -4,13 +4,11 @@ import { getQuestionAnswerList, getQuestionHotAnswerList } from "../utils";
 import styles from "./styles.module.scss";
 import AnswerItem from "./item";
 import { AtButton } from "taro-ui";
-import { useCallback } from "react";
 
 const AnswerList = ({ questionId }) => {
   const [answerList, setAnswerList] = useState([]);
   const [isNew, setIsNew] = useState("true");
   const [currentPage, setCurrentPage] = useState(1);
-  // const [isLast, setIsLast] = useState(false);
   const handleSwitch = () => {
     setIsNew(!isNew);
   };
@@ -66,6 +64,7 @@ const AnswerList = ({ questionId }) => {
             <AnswerItem key={item._id} item={item} />
             <View className={styles.btnBox}>
               <AtButton
+                className={styles.perBtn}
                 onClick={() => {
                   prePageData();
                 }}
@@ -74,6 +73,7 @@ const AnswerList = ({ questionId }) => {
                 上一篇
               </AtButton>
               <AtButton
+                className={styles.nextBtn}
                 onClick={() => {
                   nextPageData();
                 }}

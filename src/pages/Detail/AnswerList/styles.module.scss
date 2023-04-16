@@ -27,8 +27,14 @@ $third-color:#21A187;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        &:first-child{
-            background-color: #21A187;
+        
+        .nextBtn{
+            background-color: $third-color;
+            color: whitesmoke;
+        }
+        .perBtn{
+            background-color: $forth-color;
+            color: whitesmoke;
         }
     }
     
@@ -60,6 +66,9 @@ $third-color:#21A187;
         }
         .content{
             min-height: 15rem;
+            padding: .3rem;
+            padding-top: .5rem;
+            line-height: 1.5rem;
             // height: 4rem;
             // display: -webkit-box;
             // overflow: hidden;
