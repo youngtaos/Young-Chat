@@ -83,7 +83,7 @@ const AddAnswer = () => {
       <AtToast
         isOpened={isBlock}
         onClose={() => {
-          setIsOpened(false);
+          setIsBlock(false);
         }}
         duration={1000}
         text="答案不能为空哦"
