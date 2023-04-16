@@ -21,6 +21,15 @@ $third-color:#21A187;
             color: $primary-color;
             font-size: .8rem;
         }
+        
+    }
+    .btnBox{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        &:first-child{
+            background-color: #21A187;
+        }
     }
     
     .AnswerItem{
