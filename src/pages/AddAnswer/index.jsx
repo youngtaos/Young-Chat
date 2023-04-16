@@ -7,8 +7,10 @@ import styles from "./styles.module.scss";
 import { getQuestionById } from "../index/utils";
 import { AddQuestionAnswer } from "../Detail/utils";
 import { AtToast, AtButton } from "taro-ui";
+
 const AddAnswer = () => {
   const router = useRouter();
+  const userInfo = Taro.getStorageSync("TOKEN");
   const [questionId] = useState(router.params.questionId);
   const [questionInfo, setQuestionInfo] = useState(null);
   const [placeholder] = useState("请在这里输入……");
@@ -35,7 +37,7 @@ const AddAnswer = () => {
   };
 
   const handleSubmit = () => {
-    if (answerContent) {
+    if (answerContent || userInfo) {
       AddQuestionAnswer(questionId, { content: answerContent }).then(() => {
         setIsOpened(true);
       });
@@ -86,7 +88,7 @@ const AddAnswer = () => {
           setIsBlock(false);
         }}
         duration={1000}
-        text="答案不能为空哦"
+        text={userInfo ? "答案不能为空哦" : "请先登录"}
         // icon="{icon}"
       ></AtToast>
     </View>

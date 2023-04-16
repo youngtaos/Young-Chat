@@ -16,8 +16,8 @@ export function getQuestionAnswerList(id, params) {
     })
 }
 
-export function AddQuestionAnswer(id, params) {
+export function AddQuestionAnswer(id, data) {
     return request.post(`/questions/${id}/answer`, {
-        params
+        data
     })
 }

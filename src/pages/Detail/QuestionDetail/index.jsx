@@ -3,14 +3,20 @@ import styles from "./styles.module.scss";
 import { useState, useEffect } from "react";
 import { getQuestionById } from "../../index/utils";
 import Taro from "@tarojs/taro";
+import { AtToast } from "taro-ui";
 
 const QuestionDetail = ({ questionId }) => {
   const [questionInfo, setQuestionInfo] = useState(null);
-
+  const [isOpened, setIsOpened] = useState(false);
+  const userInfo = Taro.getStorageSync("TOKEN");
   function handleClick(qId) {
-    Taro.navigateTo({
-      url: `/pages/AddAnswer/index?questionId=${qId}`,
-    });
+    if (userInfo) {
+      Taro.navigateTo({
+        url: `/pages/AddAnswer/index?questionId=${qId}`,
+      });
+    } else {
+      setIsOpened(true);
+    }
   }
 
   useEffect(() => {
@@ -51,6 +57,15 @@ const QuestionDetail = ({ questionId }) => {
           </Button>
         </View>
       </View>
+      <AtToast
+        isOpened={isOpened}
+        onClose={() => {
+          setIsOpened(false);
+        }}
+        duration={1000}
+        text={userInfo ? "答案不能为空哦" : "请先登录"}
+        // icon="{icon}"
+      ></AtToast>
     </View>
   );
 };
