@@ -1,13 +1,15 @@
 /* eslint-disable jsx-quotes */
 import Taro from "@tarojs/taro";
+import React from "react";
 import { View } from "@tarojs/components";
 import styles from "./styles.module.scss";
 import { AtFloatLayout, AtFab, AtToast, AtButton } from "taro-ui";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addQuestion, getTopicsList } from "../../utils";
 import ContentCom from "./content";
+import TagBox from "./TagBox";
 
-const AddQuestion = () => {
+const AddQuestion = React.memo(() => {
   const [isOpened, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const userInfo = Taro.getStorageSync("TOKEN");
@@ -17,6 +19,11 @@ const AddQuestion = () => {
   const [content, setContent] = useState("");
   const [lessInfo, setLesssInfo] = useState(false);
 
+  useEffect(() => {
+    getTopicsList().then((res) => {
+      setTopicsList(res);
+    });
+  }, []);
   const handleSelectTopic = (topic) => {
     let temp = selectedTopics;
     temp.push(topic);
@@ -81,17 +88,16 @@ const AddQuestion = () => {
       </AtFab>
 
       <AtFloatLayout isOpened={isOpened} title="你的问题" onClose={handleClose}>
-        <ContentCom
-          topicsList={topicsList}
-          handleSelectTopic={handleSelectTopic}
-          handleCancelTopics={handleCancelTopics}
-          handleGetTopics={handleGetTopics}
-          selectedTopics={selectedTopics}
-          title={title}
-          setTitle={setTitle}
-          content={content}
-          setContent={setContent}
-        />
+        <ContentCom />
+        {topicsList.length && (
+          <TagBox
+            topicsList={topicsList}
+            handleSelectTopic={handleSelectTopic}
+            handleCancelTopics={handleCancelTopics}
+            handleGetTopics={handleGetTopics}
+            selectedTopics={selectedTopics}
+          ></TagBox>
+        )}
         <AtButton
           type="primary"
           size="small"
@@ -126,6 +132,6 @@ const AddQuestion = () => {
       ></AtToast>
     </View>
   );
-};
+});
 
 export default AddQuestion;

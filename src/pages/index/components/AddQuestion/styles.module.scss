@@ -30,22 +30,32 @@ $third-color:#21A187;
             padding: .5rem;
             margin-top: .4rem;
         }
-        .tagBox{
-            display: flex;
-            flex-direction: row;
-            padding: 0.3rem;
-            .tag{
-                margin: .2rem;
-                position: relative;
-                .tagIcon{
-                    position: absolute;
-                    // z-index: 9999;
-                    right: 0.05rem;
-                    top: -0.2rem;
-                }
+        
+        
+    }
+    .tagBox{
+        display: flex;
+        flex-direction: row;
+        padding: 0.3rem;
+        .tag{
+            margin: .2rem;
+            position: relative;
+            .tagIcon{
+                position: absolute;
+                // z-index: 9999;
+                right: 0.05rem;
+                top: -0.2rem;
+                width: 1rem;
+                height: 1rem;
+                background-color: red;
+                color: whitesmoke;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.6rem;
             }
         }
-        
     }
     .qbtn{
         background-color: $third-color;
