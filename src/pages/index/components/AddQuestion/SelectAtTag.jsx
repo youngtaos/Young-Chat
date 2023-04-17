@@ -2,8 +2,14 @@
 import { useState } from "react";
 import { AtTag } from "taro-ui";
 
-const SelectAtTag = ({ item, handleSelectTopic, handleCancelTopics }) => {
-  const [isActive, setIsActive] = useState(false);
+const SelectAtTag = ({
+  item,
+  handleSelectTopic,
+  handleCancelTopics,
+  active,
+}) => {
+  const [isActive, setIsActive] = useState(active);
+  console.log(isActive);
   const handleClick = () => {
     if (!isActive) {
       handleSelectTopic(item);

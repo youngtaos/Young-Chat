@@ -1,6 +1,5 @@
 /* eslint-disable jsx-quotes */
 import Taro from "@tarojs/taro";
-import React from "react";
 import { View } from "@tarojs/components";
 import styles from "./styles.module.scss";
 import { AtFloatLayout, AtFab, AtToast, AtButton } from "taro-ui";
@@ -9,7 +8,7 @@ import { addQuestion, getTopicsList } from "../../utils";
 import ContentCom from "./content";
 import TagBox from "./TagBox";
 
-const AddQuestion = React.memo(() => {
+const AddQuestion = () => {
   const [isOpened, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const userInfo = Taro.getStorageSync("TOKEN");
@@ -137,6 +136,6 @@ const AddQuestion = React.memo(() => {
       ></AtToast>
     </View>
   );
-});
+};
 
 export default AddQuestion;
