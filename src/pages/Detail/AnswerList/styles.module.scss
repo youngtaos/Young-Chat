@@ -23,6 +23,13 @@ $third-color:#21A187;
         }
         
     }
+    .noContent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 5rem;
+        color: #999;
+    }
     .btnBox{
         display: flex;
         flex-direction: row;

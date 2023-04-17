@@ -57,6 +57,7 @@ const TagBox = ({
             return (
               <View key={item._id} className={styles.tag}>
                 <SelectAtTag
+                  key={item._id}
                   item={item}
                   active={selectedTopics.includes(item)}
                   handleSelectTopic={handleSelectTopic}

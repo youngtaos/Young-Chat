@@ -84,7 +84,22 @@ const AnswerList = ({ questionId }) => {
           </>
         );
       })}
-      {!answerList.length && <AtButton>到底了</AtButton>}
+      {!answerList.length && (
+        <View>
+          <View className={styles.noContent}>到底了,没有更多内容了哦</View>
+          <View className={styles.btnBox}>
+            <AtButton
+              className={styles.perBtn}
+              onClick={() => {
+                prePageData();
+              }}
+              disabled={currentPage === 1}
+            >
+              上一篇
+            </AtButton>
+          </View>
+        </View>
+      )}
     </View>
   );
 };
