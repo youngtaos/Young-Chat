@@ -88,7 +88,12 @@ const AddQuestion = React.memo(() => {
       </AtFab>
 
       <AtFloatLayout isOpened={isOpened} title="你的问题" onClose={handleClose}>
-        <ContentCom />
+        <ContentCom
+          title={title}
+          setTitle={setTitle}
+          content={content}
+          setContent={setContent}
+        />
         {topicsList.length && (
           <TagBox
             topicsList={topicsList}

@@ -2,11 +2,8 @@
 import React from "react";
 import { Textarea, Input, View } from "@tarojs/components";
 import styles from "./styles.module.scss";
-import { useState } from "react";
 
-const ContentCom = React.memo(() => {
-  const [ctitle, setCtitle] = useState("");
-  const [cContent, setCcontent] = useState("");
+const ContentCom = React.memo(({ title, setTitle, content, setContent }) => {
   return (
     <View className={styles.questionWrapper}>
       <View>
@@ -14,18 +11,18 @@ const ContentCom = React.memo(() => {
           <Input
             className={styles.questionInput}
             name="问题名字"
-            value={ctitle}
+            value={title}
             placeholder="请填入问题名字..."
             onChange={(value) => {
-              setCtitle(value);
+              setTitle(value);
             }}
             border
           />
           <Textarea
             className={styles.questionTextarea}
-            value={cContent}
+            value={content}
             onChange={(value) => {
-              setCcontent(value);
+              setContent(value);
             }}
             maxLength={200}
             placeholder="请详细描述你的问题...(最多可输入两百字)"
