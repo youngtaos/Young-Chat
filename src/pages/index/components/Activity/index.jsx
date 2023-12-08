@@ -1,7 +1,11 @@
 /* eslint-disable jsx-quotes */
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { getQuestions, getTopicsQuestionsList } from "../../utils";
+import {
+  collectingQuestion,
+  getQuestions,
+  getTopicsQuestionsList,
+} from "../../utils";
 import Taro from "@tarojs/taro";
 import { AtButton, AtToast } from "taro-ui";
 
@@ -10,9 +14,18 @@ const Activity = ({ question, setQuestion, currentIndex, topic }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   function handleClick(questionId) {
-    Taro.navigateTo({
-      url: `/pages/Detail/index?questionId=${questionId}`,
-    });
+    // Taro.navigateTo({
+    //   url: `/pages/Detail/index?questionId=${questionId}`,
+    // });
+  }
+  function hancleCollectingQuestion(questionId) {
+    collectingQuestion(questionId)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   useEffect(() => {
     const arr = new Array(topic.length).fill(2);
@@ -117,9 +130,16 @@ const Activity = ({ question, setQuestion, currentIndex, topic }) => {
                 <view className={styles.name}>{item.name}</view>
                 <view className={styles.desc}>{item.description}</view>
                 <view className={styles.love}>
-                  <view>123</view>
+                  <view>{item.followerNumber}</view>
                   <view>
-                    <button className={styles.btn}>搭一起</button>
+                    <button
+                      className={styles.btn}
+                      onClick={() => {
+                        hancleCollectingQuestion(item._id);
+                      }}
+                    >
+                      搭一起
+                    </button>
                   </view>
                 </view>
               </view>

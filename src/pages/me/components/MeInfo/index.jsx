@@ -11,6 +11,7 @@ const MeInfo = ({ userId, setUserId }) => {
       getUserInfo(userId).then((res) => {
         setUserInfo(res);
       });
+    console.log(113);
   }, [userId]);
   const getAvatar = () => {
     const userInfoSto = Taro.getStorageSync("userInfo");
@@ -34,10 +35,10 @@ const MeInfo = ({ userId, setUserId }) => {
       <text className={styles.logout} onClick={handleLogout}>
         溜了？退出登录
       </text>
-      <image
+      {/* <image
         className={styles.bgWare}
         src="https://codermoyv.gitee.io/coder-moyv/assets/images/wechat/bg_wave.gif"
-      ></image>
+      ></image> */}
       <view className={styles.userinfo}>
         <image src={userInfo.avatar_url} onClick={getAvatar}></image>
         <view className={styles.name}>{userInfo.name}</view>
@@ -46,7 +47,7 @@ const MeInfo = ({ userId, setUserId }) => {
           <view>{userInfo.followingNumber || 0} 关注</view>
           <view>{userInfo.questioningNumber || 0} 提问</view>
           <view>{userInfo.answeringNumber || 0} 回答</view>
-          <view>{userInfo.collectedAnswerNumber || 0} 收藏</view>
+          <view>{userInfo.collectedQuestion?.length || 0} 收藏</view>
         </view>
       </view>
     </view>

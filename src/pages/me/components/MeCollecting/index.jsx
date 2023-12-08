@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getUserCollecting } from "../../utils";
-import { getTime } from "../../../../utils/index";
 import styles from "./styles.module.scss";
 
 const MeCollecting = ({ userId }) => {
@@ -26,7 +25,7 @@ const MeCollecting = ({ userId }) => {
               <view className={styles.ItemBox} key={item._id}>
                 {/* <view>{getTime(item.createdAt)}</view> */}
                 {/* <view className={styles.contentBoxHeading}>{item.content}</view> */}
-                <view className={styles.contentDesc}>{item.content}</view>
+                <view className={styles.contentDesc}>{item.name}</view>
               </view>
             );
           })}

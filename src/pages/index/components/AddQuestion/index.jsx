@@ -19,15 +19,6 @@ const AddQuestion = () => {
     lessInfo: false,
   });
   const userInfo = Taro.getStorageSync("TOKEN");
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [isLogin, setIsLogin] = useState(true);
-
-  // const [topicsList, setTopicsList] = useState([]);
-  // const [selectedTopics, setSelectedTopics] = useState([]);
-  // const [title, setTitle] = useState("");
-  // const [content, setContent] = useState("");
-  // const [lessInfo, setLesssInfo] = useState(false);
-
   useEffect(() => {
     getTopicsList().then((res) => {
       setState({ ...state, topicsList: res });
@@ -107,12 +98,12 @@ const AddQuestion = () => {
         }}
         className={styles.addBtn}
       >
-        提问?
+        发布
       </AtFab>
 
       <AtFloatLayout
         isOpened={state.isOpen}
-        title="你的问题"
+        title="你的活动"
         onClose={() => {
           handleClose();
         }}
@@ -141,7 +132,7 @@ const AddQuestion = () => {
             handleAddQuestion();
           }}
         >
-          提问
+          发布活动
         </AtButton>
       </AtFloatLayout>
 
@@ -151,7 +142,7 @@ const AddQuestion = () => {
           setState({ ...state, isLogin: true });
         }}
         duration={1000}
-        text="请先登录才能提问哦！"
+        text="请先登录才能发布哦！"
         // icon="{icon}"
       ></AtToast>
 
