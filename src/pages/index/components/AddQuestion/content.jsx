@@ -10,9 +10,9 @@ const ContentCom = React.memo(({ title, setTitle, content, setContent }) => {
         <View>
           <Input
             className={styles.questionInput}
-            name="问题名字"
+            name="活动名字"
             value={title}
-            placeholder="请填入问题名字..."
+            placeholder="请填写活动名字..."
             onChange={(value) => {
               setTitle(value);
             }}
@@ -25,7 +25,7 @@ const ContentCom = React.memo(({ title, setTitle, content, setContent }) => {
               setContent(value);
             }}
             maxLength={200}
-            placeholder="请详细描述你的问题...(最多可输入两百字)"
+            placeholder="请详细描述你的活动...(最多可输入两百字)"
           />
         </View>
       </View>
