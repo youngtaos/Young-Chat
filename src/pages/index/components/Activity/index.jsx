@@ -5,7 +5,7 @@ import { getQuestions, getTopicsQuestionsList } from "../../utils";
 import Taro from "@tarojs/taro";
 import { AtButton, AtToast } from "taro-ui";
 
-const Question = ({ question, setQuestion, currentIndex, topic }) => {
+const Activity = ({ question, setQuestion, currentIndex, topic }) => {
   const [page, setPage] = useState();
   const [isOpened, setIsOpened] = useState(false);
 
@@ -79,6 +79,7 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
         // icon="{icon}"
       ></AtToast>
       {question.map((item) => {
+        console.log(item, "item");
         return (
           <view
             key={item._id}
@@ -87,18 +88,35 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
               handleClick(item._id);
             }}
           >
-            <view className={styles.imgBox}>
-              <image
-                src={
-                  item.avatar_url ||
-                  "http://localhost:7000/upload/203e17202ef06b7c97552f401.png"
-                }
-                alt="图片"
-              />
+            <view className={styles.top}>
+              <view className={styles.leftBox}>
+                <image
+                  src={
+                    item.questioner.avatar_url ||
+                    "http://localhost:7000/upload/203e17202ef06b7c97552f401.png"
+                  }
+                  alt="图片"
+                />
+                <view className={styles.name}>{item.questioner.name}</view>
+              </view>
+              <view>
+                <AtButton className={styles.notice}>关注</AtButton>
+              </view>
             </view>
-            <view className={styles.content}>
-              <view className={styles.name}>{item.name}</view>
-              <view className={styles.desc}>{item.description}</view>
+            <view className={styles.mid}>
+              <view className={styles.imgBox}>
+                <image
+                  src={
+                    item.avatar_url ||
+                    "http://localhost:7000/upload/203e17202ef06b7c97552f401.png"
+                  }
+                  alt="图片"
+                />
+              </view>
+              <view className={styles.content}>
+                <view className={styles.name}>{item.name}</view>
+                <view className={styles.desc}>{item.description}</view>
+              </view>
             </view>
           </view>
         );
@@ -115,4 +133,4 @@ const Question = ({ question, setQuestion, currentIndex, topic }) => {
   );
 };
 
-export default Question;
+export default Activity;

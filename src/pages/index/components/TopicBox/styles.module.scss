@@ -22,22 +22,12 @@ $third-color:#21A187;
             justify-content: center;
             align-items: center;
             width: 3rem;
-            background-color: $primary-color;
-            padding: .2rem;
-            color: white;
+            color: #969696;
+            font-size: .5rem;
             border: none;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
-            // &:active{
-            //     scale: (1.2);
-            // }
-              &:active {
-                background-color: $third-color;
-              }
-              &:hover{
-                background-color: $third-color;
-              }
         }
     }
 }

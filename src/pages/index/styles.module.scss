@@ -1,4 +1,9 @@
 .wrapper{
     display: flex;
     flex-direction: column;
+    .top{
+        position: sticky;
+        top: 0;
+        background-color: rgba(95, 158, 160, .5); 
+    }
 }

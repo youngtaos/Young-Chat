@@ -1,0 +1,98 @@
+$forth-color: #20508F;
+$primary-color: cadetblue;
+$secondary-color: #EDEDED;
+$third-color:#21A187;
+$contentBox-background: linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%);
+$contentBox-padding: 1rem;
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    .item{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        padding: 1rem;
+        padding-top: 0rem;
+        border-radius: .4rem;
+        //background-color: rgba(150, 150, 150, 0.1);    
+        .top{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.2rem;
+            .leftBox{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                box-sizing: border-box;
+                padding: 0.2rem;
+                image{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 0.05rem solid #21A187;
+                }
+                .name{
+                    padding-left: 0.3rem;
+                    color: #6c6b6b;
+                    font-size: .5rem;
+                }
+            }
+            
+            .notice{
+                display: flex;
+                width: 3rem;
+                font-size: .5rem;
+                height: 1.5rem;
+                color: whitesmoke;
+                background-color: #21A187;
+                border-radius: 0.7rem;
+                text-align: center;
+                line-height: 1.5rem;
+                border: none;
+                
+            }
+        }
+        .mid{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            
+            .name{
+                color: rgb(62, 62, 62);
+                margin-bottom: .2rem;
+                font-weight: 700;
+                font-size: .9rem;
+            }
+            .desc{
+                color: #333;
+                font-size: .6rem;
+            }
+            .imgBox{
+                width: 6rem;
+                height: 6rem;
+                background-color: white;
+                margin-right: 1rem;
+                border-radius: 0.4rem;
+                flex-shrink: 0;
+                overflow: hidden;
+                image{
+                    width: 6rem;
+                    max-height: 6rem;
+                }
+            }
+            
+            .content{
+                flex-shrink: 1;
+            }
+        }
+    }
+    .more{
+        background-color: $third-color;
+        color: whitesmoke;
+    }
+}

@@ -6,7 +6,7 @@ switch (env) {
         baseUrlPrefix = 'http://localhost:7000'
         break
     case 'production':
-        baseUrlPrefix = ''
+        baseUrlPrefix = 'http://localhost:7000'
         break
 }
 

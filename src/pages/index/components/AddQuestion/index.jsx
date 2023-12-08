@@ -9,70 +9,94 @@ import ContentCom from "./content";
 import TagBox from "./TagBox";
 
 const AddQuestion = () => {
-  const [isOpened, setIsOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [state, setState] = useState({
+    selectedTopics: [],
+    content: "",
+    title: "",
+    isOpen: false,
+    isLogin: false,
+    topicsList: [],
+    lessInfo: false,
+  });
   const userInfo = Taro.getStorageSync("TOKEN");
-  const [topicsList, setTopicsList] = useState([]);
-  const [selectedTopics, setSelectedTopics] = useState([]);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [lessInfo, setLesssInfo] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [isLogin, setIsLogin] = useState(true);
+
+  // const [topicsList, setTopicsList] = useState([]);
+  // const [selectedTopics, setSelectedTopics] = useState([]);
+  // const [title, setTitle] = useState("");
+  // const [content, setContent] = useState("");
+  // const [lessInfo, setLesssInfo] = useState(false);
 
   useEffect(() => {
     getTopicsList().then((res) => {
-      setTopicsList(res);
+      setState({ ...state, topicsList: res });
     });
   }, []);
   const handleSelectTopic = (topic) => {
-    let temp = selectedTopics;
+    let temp = state.selectedTopics;
     temp.push(topic);
-    setSelectedTopics(temp);
+    setState({
+      ...state,
+      selectedTopics: temp,
+    });
   };
   const handleCancelTopics = (topic) => {
-    let temp = selectedTopics;
+    let temp = state.selectedTopics;
     temp = temp.filter((item) => item != topic);
-    setSelectedTopics(temp);
+    setState({ ...state, selectedTopics: temp });
   };
 
   const handleGetTopics = () => {
     getTopicsList().then((res) => {
-      setTopicsList(res);
+      setState({ ...state, topicsList: res });
     });
   };
 
   const handleOpen = () => {
     if (!userInfo) {
-      setIsLogin(false);
+      setState({ ...state, isOpen: false });
     } else {
-      setIsOpen(true);
+      setState({ ...state, isOpen: true });
     }
   };
 
   const handleClose = () => {
-    setSelectedTopics([]);
-    setContent("");
-    setTitle("");
-    setIsOpen(false);
+    setState({
+      ...state,
+      selectedTopics: [],
+      content: "",
+      title: "",
+      isOpen: false,
+    });
   };
 
   const handleAddQuestion = () => {
-    const res = selectedTopics.map((item) => item._id);
+    const res = state.selectedTopics.map((item) => item._id);
     if (!userInfo) {
-      setIsLogin(false);
+      setState({ ...state, isLogin: false });
       return;
     }
-    if (!title || !content || !selectedTopics.length) {
-      setLesssInfo(true);
+    if (!state.title || !state.content || !state.selectedTopics.length) {
+      setState({ ...state, lessInfo: true });
     } else {
       const data = {
-        name: title,
-        description: content,
+        name: state.title,
+        description: state.content,
         topics: res,
       };
       addQuestion(data).then(() => {
-        setIsOpen(false);
+        setState({ ...state, isOpen: false });
       });
     }
+  };
+
+  const setTitle = (title) => {
+    setState({ ...state, title });
+  };
+
+  const setContent = (content) => {
+    setState({ ...SVGMetadataElement, content });
   };
 
   return (
@@ -86,27 +110,33 @@ const AddQuestion = () => {
         提问?
       </AtFab>
 
-      <AtFloatLayout isOpened={isOpened} title="你的问题" onClose={handleClose}>
+      <AtFloatLayout
+        isOpened={state.isOpen}
+        title="你的问题"
+        onClose={() => {
+          handleClose();
+        }}
+      >
         <ContentCom
-          title={title}
+          title={state.title}
           setTitle={setTitle}
-          content={content}
+          content={state.content}
           setContent={setContent}
         />
-        {topicsList.length && (
+        {state.topicsList.length && (
           <TagBox
-            topicsList={topicsList}
+            topicsList={state.topicsList}
             handleSelectTopic={handleSelectTopic}
             handleCancelTopics={handleCancelTopics}
             handleGetTopics={handleGetTopics}
-            selectedTopics={selectedTopics}
+            selectedTopics={state.selectedTopics}
           ></TagBox>
         )}
         <AtButton
           type="primary"
           size="small"
           className={styles.qbtn}
-          disabled={!isLogin}
+          disabled={!state.isLogin}
           onClick={() => {
             handleAddQuestion();
           }}
@@ -116,9 +146,9 @@ const AddQuestion = () => {
       </AtFloatLayout>
 
       <AtToast
-        isOpened={!isLogin}
+        isOpened={!state.isLogin}
         onClose={() => {
-          setIsLogin(true);
+          setState({ ...state, isLogin: true });
         }}
         duration={1000}
         text="请先登录才能提问哦！"
@@ -126,9 +156,9 @@ const AddQuestion = () => {
       ></AtToast>
 
       <AtToast
-        isOpened={lessInfo}
+        isOpened={state.lessInfo}
         onClose={() => {
-          setLesssInfo(false);
+          setState({ ...state, lessInfo: false });
         }}
         text="请将信息填写完整（至少选择一个词条）！"
         // icon="{icon}"

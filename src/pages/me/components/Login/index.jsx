@@ -18,6 +18,7 @@ function Login({ userId, setUserId }) {
           Taro.getUserInfo({
             // eslint-disable-next-line no-shadow
             success: (userInfo) => {
+              console.log(userInfo, "userInfo");
               login({
                 name: userInfo.userInfo.nickName,
                 password: "123",
