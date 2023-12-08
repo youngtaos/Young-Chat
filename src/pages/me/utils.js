@@ -26,7 +26,7 @@ export function getUserInfo(id, params) {
 }
 
 export function getUserCollecting(id, params) {
-    return request.get(`/users/${id}/collectedAnswer`, {
+    return request.get(`/users/${id}/collectedQuestion`, {
         params
     })
 }

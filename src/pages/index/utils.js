@@ -68,6 +68,14 @@ export function addQuestion(data) {
     })
 }
 
+//收藏活动（问题）
+export function collectingQuestion(id, params) {
+    console.log(id, params)
+    return request.put(`/users/collectedQuestion/${id}`, {
+        params
+    })
+}
+
 
 
 
