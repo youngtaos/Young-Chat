@@ -15,10 +15,9 @@ const SearchBox = ({ setQuestion }) => {
   return (
     <view className={styles.wrapper}>
       <AtSearchBar
-        showActionButton
         value={inputValue}
         placeholder="搜索相关内容"
-        onActionClick={searchHandle}
+        onConfirm={searchHandle}
         onChange={(value) => {
           setInputValue(value);
         }}
