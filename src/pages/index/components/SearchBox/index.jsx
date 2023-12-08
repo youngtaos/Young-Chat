@@ -21,6 +21,8 @@ const SearchBox = ({ setQuestion }) => {
         onChange={(value) => {
           setInputValue(value);
         }}
+        showActionButton={false}
+        actionName="找搭子"
       />
     </view>
   );

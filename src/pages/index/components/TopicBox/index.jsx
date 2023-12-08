@@ -26,8 +26,9 @@ const TopicBox = ({ currentIndex, setCurrentIndex, topic, setTopics }) => {
                 }}
                 style={{
                   // backgroundColor: `${colorStr[index % 4]}`,
-                  color: "black",
-                  fontSize: "0.7rem",
+                  color: "rgb(62, 62, 62)",
+                  fontSize: "0.6rem",
+                  fontWeight: 800,
                   borderBottom: "0.2rem solid #21A187",
                   width: "1.5rem",
                 }}

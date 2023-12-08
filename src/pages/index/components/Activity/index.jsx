@@ -116,6 +116,12 @@ const Activity = ({ question, setQuestion, currentIndex, topic }) => {
               <view className={styles.content}>
                 <view className={styles.name}>{item.name}</view>
                 <view className={styles.desc}>{item.description}</view>
+                <view className={styles.love}>
+                  <view>123</view>
+                  <view>
+                    <button className={styles.btn}>搭一起</button>
+                  </view>
+                </view>
               </view>
             </view>
           </view>
